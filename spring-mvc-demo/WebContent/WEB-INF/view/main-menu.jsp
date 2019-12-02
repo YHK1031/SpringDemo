@@ -12,6 +12,11 @@
 <a href="student/showForm">Student form</a>
 <button type="button" onclick="location.href='student/showForm'">student</button>
 
+<br><br>
+
+<a href="customer/showForm">Customer form</a>
+<button type="button" onclick="location.href='customer/showForm'">customer</button>
+
 
 </body>
 
