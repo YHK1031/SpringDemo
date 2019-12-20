@@ -42,8 +42,59 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save the customer .. finally
-		currentSession.save(theCustomer);
+		currentSession.saveOrUpdate(theCustomer);
 		
+	}
+
+	@Override
+	public Customer getCustomer(int theId) {
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// noew retrieve/read from database using the primary key
+		Customer theCustomer = currentSession.get(Customer.class, theId);
+		
+		return theCustomer;
+	}
+
+	@Override
+	public void deleteCustomer(int theId) {
+
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Customer where id=:customerId");
+		theQuery.setParameter("customerId", theId);
+		
+		theQuery.executeUpdate();
+		
+		/* way of deleting using customer object
+		Customer theCustomer = currentSession.get(Customer.class, theId);
+		
+		currentSession.delete(theCustomer);
+		*/
+	}
+
+	@Override
+	public List<Customer> searchCustomers(String theSearchName) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Customer> theQuery = null;
+		
+		if(theSearchName !=null && theSearchName.trim().length()>0) {
+			 theQuery =currentSession.createQuery("from Customer where lower(firstName) like :theName or lower(lastName) like :theName", Customer.class);
+	         theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+		}else {
+			theQuery = currentSession.createQuery("from Customer order by lastName", Customer.class);
+		}
+		
+		
+		List<Customer> customers = theQuery.getResultList();
+		
+		return customers;
 	}
 
 }
