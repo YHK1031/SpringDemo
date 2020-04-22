@@ -10,5 +10,10 @@
 		"zip": "19103",
 		"country": "USA"
 	},
+<<<<<<< HEAD
 	"languages" : ["Java", "C#", "Python", "Javascript"]
+=======
+	"languages" : ["Java", "C#", "Python", "Javascript"],
+	"company" : "hello company"
+>>>>>>> 52bae5a80a874cbc6f8221f48be7096f6c289654
 }
