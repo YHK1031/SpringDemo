@@ -5,10 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Student {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 52bae5a80a874cbc6f8221f48be7096f6c289654
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -69,9 +65,4 @@ public class Student {
 	public void setLanguages(String[] languages) {
 		this.languages = languages;
 	}
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> 52bae5a80a874cbc6f8221f48be7096f6c289654
 }
